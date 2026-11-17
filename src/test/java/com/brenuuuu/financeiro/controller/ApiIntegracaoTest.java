@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Sobe a aplicacao com os dados de exemplo (data.sql) e testa os endpoints.
+ * Sobe a aplicação com os dados de exemplo (data.sql) e testa os endpoints.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -51,7 +51,7 @@ class ApiIntegracaoTest {
 
     @Test
     void naoAceitaCategoriaDeOutroTipo() throws Exception {
-        // categoria 4 (Aluguel) e de DESPESA, mas o lancamento e RECEITA
+        // categoria 4 (Aluguel) é de DESPESA, mas o lançamento é RECEITA
         String json = """
                 {"descricao": "Teste", "valor": 10, "tipo": "RECEITA",
                  "dataVencimento": "2030-01-10", "categoriaId": 4}

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
- * Um lancamento financeiro: uma conta a pagar (DESPESA) ou a receber (RECEITA).
+ * Um lançamento financeiro: uma conta a pagar (DESPESA) ou a receber (RECEITA).
  */
 @Entity
 @Table(name = "lancamento")
@@ -53,8 +53,8 @@ public class Lancamento {
     }
 
     /**
-     * O status nao fica salvo no banco: ele e calculado.
-     * Se tem data de pagamento esta PAGO; se o vencimento ja passou esta ATRASADO.
+     * O status não fica salvo no banco: ele é calculado.
+     * Se tem data de pagamento, está PAGO; se o vencimento já passou, está ATRASADO.
      */
     public StatusLancamento getStatus() {
         if (dataPagamento != null) {

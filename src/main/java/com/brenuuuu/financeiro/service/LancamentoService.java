@@ -50,7 +50,7 @@ public class LancamentoService {
     public LancamentoResponse atualizar(Long id, LancamentoRequest dados) {
         Lancamento lancamento = buscarPorId(id);
         if (lancamento.getDataPagamento() != null) {
-            throw new RegraDeNegocioException("Lancamento ja pago nao pode ser alterado");
+            throw new RegraDeNegocioException("Lançamento já pago não pode ser alterado");
         }
         lancamento.setDescricao(dados.descricao());
         lancamento.setPessoa(dados.pessoa());
@@ -65,7 +65,7 @@ public class LancamentoService {
     public LancamentoResponse pagar(Long id) {
         Lancamento lancamento = buscarPorId(id);
         if (lancamento.getDataPagamento() != null) {
-            throw new RegraDeNegocioException("Este lancamento ja foi pago");
+            throw new RegraDeNegocioException("Este lançamento já foi pago");
         }
         lancamento.setDataPagamento(LocalDate.now());
         return LancamentoResponse.de(repository.save(lancamento));
@@ -75,18 +75,18 @@ public class LancamentoService {
         repository.delete(buscarPorId(id));
     }
 
-    // Regra: uma despesa so pode usar categoria de despesa (e o mesmo para receita)
+    // Regra: uma despesa só pode usar categoria de despesa (e o mesmo para receita)
     private Categoria buscarCategoriaDoMesmoTipo(LancamentoRequest dados) {
         Categoria categoria = categoriaService.buscarPorId(dados.categoriaId());
         if (categoria.getTipo() != dados.tipo()) {
             throw new RegraDeNegocioException("A categoria '" + categoria.getNome()
-                    + "' e de " + categoria.getTipo() + " e o lancamento e de " + dados.tipo());
+                    + "' é de " + categoria.getTipo() + " e o lançamento é de " + dados.tipo());
         }
         return categoria;
     }
 
     private Lancamento buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Lancamento", id));
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Lançamento " + id + " não encontrado"));
     }
 }

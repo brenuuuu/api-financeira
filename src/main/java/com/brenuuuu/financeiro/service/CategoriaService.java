@@ -28,7 +28,7 @@ public class CategoriaService {
 
     public CategoriaResponse criar(CategoriaRequest dados) {
         if (repository.existsByNomeIgnoreCase(dados.nome())) {
-            throw new RegraDeNegocioException("Ja existe uma categoria com o nome " + dados.nome());
+            throw new RegraDeNegocioException("Já existe uma categoria com o nome " + dados.nome());
         }
         Categoria nova = new Categoria(dados.nome(), dados.tipo());
         return CategoriaResponse.de(repository.save(nova));
@@ -37,13 +37,13 @@ public class CategoriaService {
     public void excluir(Long id) {
         Categoria categoria = buscarPorId(id);
         if (lancamentoRepository.existsByCategoriaId(id)) {
-            throw new RegraDeNegocioException("Categoria tem lancamentos e nao pode ser excluida");
+            throw new RegraDeNegocioException("Categoria tem lançamentos e não pode ser excluída");
         }
         repository.delete(categoria);
     }
 
     public Categoria buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Categoria", id));
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Categoria " + id + " não encontrada"));
     }
 }

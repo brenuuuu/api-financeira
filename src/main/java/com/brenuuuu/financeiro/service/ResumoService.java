@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Resumo financeiro de um periodo (pela data de vencimento).
+ * Resumo financeiro de um período (pela data de vencimento).
  */
 @Service
 public class ResumoService {
@@ -26,7 +26,7 @@ public class ResumoService {
 
     public ResumoResponse gerar(LocalDate inicio, LocalDate fim) {
         if (fim.isBefore(inicio)) {
-            throw new RegraDeNegocioException("A data final deve ser depois da data inicial");
+            throw new RegraDeNegocioException("A data final não pode ser anterior à data inicial");
         }
 
         List<Lancamento> lancamentos = repository.findByDataVencimentoBetweenOrderByDataVencimento(inicio, fim);

@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Captura os erros da aplicacao e devolve uma resposta JSON simples,
- * em vez da pagina de erro padrao do Spring.
+ * Captura os erros da aplicação e devolve uma resposta JSON simples,
+ * em vez da página de erro padrão do Spring.
  */
 @RestControllerAdvice
 public class TratadorDeErros {

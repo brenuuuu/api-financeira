@@ -11,7 +11,7 @@ class LancamentoTest {
 
     private Lancamento contaQueVenceEm(LocalDate vencimento) {
         Categoria aluguel = new Categoria("Aluguel", TipoLancamento.DESPESA);
-        return new Lancamento("Aluguel", "Imobiliaria", new BigDecimal("1000.00"),
+        return new Lancamento("Aluguel", "Imobiliária", new BigDecimal("1000.00"),
                 TipoLancamento.DESPESA, vencimento, aluguel);
     }
 

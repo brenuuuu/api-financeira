@@ -13,7 +13,7 @@ A ideia veio do meu trabalho no setor financeiro, onde acompanho pagamentos a fo
 - Mostra o **status** de cada conta: `PENDENTE`, `PAGO` ou `ATRASADO`
 - Permite **marcar uma conta como paga**
 - Gera um **resumo do período**: total de receitas, despesas, saldo e valor em atraso
-- Valida os dados (ex.: valor tem que ser maior que zero) e devolve erros em JSON
+- Valida os dados (ex.: o valor precisa ser maior que zero) e devolve erros em JSON
 
 ## Tecnologias
 
