@@ -19,11 +19,8 @@ Content-Type: application/json
   "categoriaId": 4
 }
 
-### Dar baixa (pagar) no lancamento 7
-PATCH http://localhost:8080/api/lancamentos/7/baixa
-Content-Type: application/json
-
-{ "dataPagamento": "2026-11-17" }
+### Pagar o lancamento 2
+PATCH http://localhost:8080/api/lancamentos/2/pagar
 
 ### Resumo do mes
 GET http://localhost:8080/api/resumo?inicio=2026-11-01&fim=2026-11-30
