@@ -1,0 +1,29 @@
+### Exemplos de chamadas (abra no VS Code com a extensao "REST Client" ou no IntelliJ)
+
+### Listar todos os lancamentos
+GET http://localhost:8080/api/lancamentos
+
+### Somente contas a pagar em atraso
+GET http://localhost:8080/api/lancamentos?tipo=DESPESA&status=ATRASADO
+
+### Criar uma conta a pagar
+POST http://localhost:8080/api/lancamentos
+Content-Type: application/json
+
+{
+  "descricao": "Conta de energia",
+  "pessoa": "Enel",
+  "valor": 850.40,
+  "tipo": "DESPESA",
+  "dataVencimento": "2026-12-10",
+  "categoriaId": 4
+}
+
+### Dar baixa (pagar) no lancamento 7
+PATCH http://localhost:8080/api/lancamentos/7/baixa
+Content-Type: application/json
+
+{ "dataPagamento": "2026-11-17" }
+
+### Resumo do mes
+GET http://localhost:8080/api/resumo?inicio=2026-11-01&fim=2026-11-30
